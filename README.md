@@ -42,3 +42,9 @@ With no arguments or missing some of them, it use this defaults values for speed
   Hash length : 24
   PHC String : $argon2i$v=19$m=65536,t=2,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG
 ```
+
+### Thanks to JetBrains for open source support
+
+<a href="https://www.jetbrains.com/"><img src="./jetbrains.png" alt="jetbrains" width="150"></a>
+<img src='https://www.gnu.org/graphics/gplv3-with-text-136x68.png'/>
+
