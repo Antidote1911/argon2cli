@@ -1,0 +1,17 @@
+[package]
+name = "argon2cli"
+version = "1.0.0"
+description = "A cli app in Rust for calculate Argon2 hash"
+authors = ["Fabrice Corraire <antidote1911@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/Antidote1911/argon2cli"
+edition = "2021"
+
+[dependencies]
+clap = { version = "3.1.6", features = ["derive","cargo"] }
+argon2 = { version = "0.3.4"}
+hex = "0.4.3"
+
+[[bin]]
+name = "argon2cli"
