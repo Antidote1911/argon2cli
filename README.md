@@ -7,7 +7,7 @@ A command-line utility to test specific Argon2 instances on your system.
 
 To show usage instructions, run:
 ```bash
-./argon2 -h
+./argon2cli -h
 ```
 
 ### With arguments
