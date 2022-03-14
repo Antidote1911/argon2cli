@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.com/Antidote1911/argon2cli.svg?branch=master)](https://travis-ci.com/Antidote1911/argon2cli)
 
 # argon2cli
-a command-line utility to test specific Argon2 instances on your system.
+A command-line utility to test specific Argon2 instances on your system.
 
 To show usage instructions, run:
 ```bash
