@@ -46,5 +46,5 @@ With no arguments or missing some of them, it use this defaults values for speed
 ### Thanks to JetBrains for open source support
 
 <a href="https://www.jetbrains.com/"><img src="./jetbrains.png" alt="jetbrains" width="150"></a>
-<img src='https://www.gnu.org/graphics/gplv3-with-text-136x68.png'/>
+
 
