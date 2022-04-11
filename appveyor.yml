@@ -45,7 +45,7 @@ artifacts:
 deploy:
       - provider: GitHub
         release: $(appveyor_repo_tag_name)
-        description: 'Release of argon2cli v${appveyor_repo_tag_name}'
+        description: 'Release of argon2cli ${appveyor_repo_tag_name}'
         draft: false
         prerelease: false
         do_rel: true
