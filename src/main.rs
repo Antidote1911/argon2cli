@@ -1,15 +1,14 @@
 #[macro_use]
 extern crate log;
-
 mod cli;
 mod lib;
 
-use clap::StructOpt;
 use cli::{Argon2Type, Cli};
 
 use std::process::exit;
 use color_eyre::eyre::{Result, eyre};
 use color_eyre::owo_colors::OwoColorize;
+use clap::Parser;
 
 
 fn main() {
@@ -24,7 +23,7 @@ fn run() -> Result<()> {
     debug!("starting up");
     let app = Cli::parse();
 
-    if app.oh && app.op{
+    if app.oh() && app.op(){
         return Err(eyre!("You can't use --oh and --op together. Type -h for help".red()))
     }
 
@@ -34,34 +33,31 @@ fn run() -> Result<()> {
         Argon2Type::Argon2id => lib::Argon2Type::Argon2id,
     };
 
-    let pass=app.password;
-    let pass_copy = pass.clone();
-
-    let salt=app.salt;
-    let salt_copy = salt.clone();
-
     // Create PasswordHashing with default values.
     let mut config = lib::PasswordHashing::new();
     // Modify this values with user inputs
-    config.password=pass;
-    config.passes=app.passes;
-    config.salt=salt;
-    config.length=app.length;
-    config.parallel=app.parallel;
-    config.megabytes=app.megabytes;
+    config.password=app.password();
+    config.iterations=app.iteration();
+    config.salt=app.salt();
+    config.length=app.length();
+    config.parallel=app.parallel();
+    config.memory=app.memory();
     config.variant=algo;
     let test=config.start()?;
 
-    if app.oh{
+    if app.oh(){
         println!("{}",test.0);
         exit(0)
     }
-    if app.op{
+    if app.op(){
         println!("{}",test.1);
         exit(0)
     }
-    println!("Password   : {}", pass_copy);
-    println!("Salt       : {} (in Base64 : {})",salt_copy, test.3);
+
+    println!("Password   : {}", app.password());
+    println!("Salt       : {} (in Base64 : {})",app.salt(), test.3);
+    println!("Memory: {} KiB, Iterations: {}, Parallelism: {}, Hash length: {}, Algo: {:?})",app.memory() ,app.iteration(), app.parallel(),app.length(), algo);
+    println!("===================================");
     println!("Hex hash   : {}", test.1);
     println!("PHC String : {}", test.0.green());
     println!("Execution Time : {} {}", test.4,"s");

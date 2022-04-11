@@ -24,8 +24,8 @@ mod tests {
         config.salt="313233343536373839616263646566".to_string();
         config.length=32;
         config.parallel=1;
-        config.passes=1;
-        config.megabytes=8;
+        config.iterations=1;
+        config.memory=8;
         let out=config.start().unwrap();
         assert_eq!("$argon2id$v=19$m=8,t=1,p=1$MzEzMjMzMzQzNTM2MzczODM5NjE2MjYzNjQ2NTY2$Y868kb3rSmYL1HxuA7HXq/tqGji8ZV5MnDyWMZX/5aE", out.0);
     }

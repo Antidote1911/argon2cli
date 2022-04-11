@@ -11,39 +11,44 @@ To show usage instructions, run:
 
 ### With arguments
 ```bash
-./argon2cli -p password -s somesalt --megabytes 32 --parallel 4 --passes 2 --length 32 --ty argon2i
+./argon2cli --pass password --salt somesalt -m 32 -p 4 -i 2 -l 32 -t argon2i
 
 Password   : password
 Salt       : somesalt (in Base64 : c29tZXNhbHQ)
-B64 Hash   : z4lrzRLwbTvz3PeAPtgiAhT+8t19TD0tDdVTdHca2o8
-Hex Hash   : cf896bcd12f06d3bf3dcf7803ed8220214fef2dd7d4c3d2d0dd55374771ada8f
-Hash length : 32
-PHC String : $argon2i$v=19$m=32768,t=2,p=4$c29tZXNhbHQ$z4lrzRLwbTvz3PeAPtgiAhT+8t19TD0tDdVTdHca2o8
+Memory: 32 KiB, Iterations: 2, Parallelism: 4, Hash length: 32, Algo: Argon2i)
+===================================
+Hex hash   : 85724a55cdca41f067be4d9f68dfcc5d0289a5f664fd96b0d6777a65672080ed
+PHC String : $argon2i$v=19$m=32,t=2,p=4$c29tZXNhbHQ$hXJKVc3KQfBnvk2faN/MXQKJpfZk/Zaw1nd6ZWcggO0
+Execution Time : 0.017565563 s
 ```
 
 ### No arguments or missing some of them
-With no arguments or missing some of them, it use this defaults values for speed test:
-- p = password
-- s = somesalt
-- megabytes = 64
-- parallel = 4
-- passes = 2
-- length = 24
-- ty = argon2i
+With no arguments or missing some of them, it use this defaults values for speed test:  
+- pass = password  
+- salt = somesalt
+- memory = 65536 KiB
+- parallelism = 4
+- iterations = 2
+- hash length = 24
+- argon type = argon2i
 
 ```bash
-  ./argon2cli
+./argon2cli
 
-  Password   : password
-  Salt       : somesalt (in Base64 : c29tZXNhbHQ)
-  B64 Hash   : RdescudvJCsgt3ub+b+dWRWJTmaaJObG
-  Hex Hash   : 45d7ac72e76f242b20b77b9bf9bf9d5915894e669a24e6c6
-  Hash length : 24
-  PHC String : $argon2i$v=19$m=65536,t=2,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG
+Password   : password
+Salt       : somesalt (in Base64 : c29tZXNhbHQ)
+Memory: 65536 KiB, Iterations: 2, Parallelism: 4, Hash length: 24, Algo: Argon2i)
+===================================
+Hex hash   : 45d7ac72e76f242b20b77b9bf9bf9d5915894e669a24e6c6
+PHC String : $argon2i$v=19$m=65536,t=2,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG
+Execution Time : 1.6075927989999999 s
 ```
 
-### Thanks to JetBrains for open source support
+For use in script, the flags --oh (only output hash) or --op (only output phc string) are very usefull.
+```bash
+./argon2cli --oh
+$argon2i$v=19$m=65536,t=2,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG
 
-<a href="https://www.jetbrains.com/"><img src="./jetbrains.png" alt="jetbrains" width="150"></a>
-
-
+./argon2cli --op
+45d7ac72e76f242b20b77b9bf9bf9d5915894e669a24e6c6
+```
