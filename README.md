@@ -3,7 +3,8 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/nc2wba8qdi3yo0bm?svg=true)](https://ci.appveyor.com/project/Antidote1911/argon2cli)
 
 # argon2cli
-A command-line utility to test specific Argon2 instances on your system.
+A command-line utility to test specific Argon2 instances on your system.  
+Latest Windows x64 release is [here](https://github.com/Antidote1911/argon2cli/releases/latest).
 
 To show usage instructions, run:
 ```bash
