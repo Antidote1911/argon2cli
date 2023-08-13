@@ -1,4 +1,4 @@
-use clap::{ArgEnum, Parser, AppSettings};
+use clap::{ValueEnum, Parser};
 
 const AUTHOR: &str = "
 Author : Fabrice Corraire <antidote1911@gmail.com>
@@ -6,7 +6,6 @@ Github : https://github.com/Antidote1911/
 ";
 
 #[derive(Parser)]
-#[clap(global_setting(AppSettings::DeriveDisplayOrder))]
 #[clap(about, author=AUTHOR, version)]
 pub struct Cli {
 
@@ -35,8 +34,9 @@ pub struct Cli {
     memory: u32,
 
     /// Algo variant to use
-    #[clap(short, long, arg_enum, name = "TYPE", default_value = "argon2i")]
+    #[clap(short, long, value_enum, name = "TYPE", default_value = "argon2i")]
     pub ty: Argon2Type,
+
 
     /// Only output hex hash
     #[clap(long)]
@@ -47,7 +47,7 @@ pub struct Cli {
     op: bool,
 }
 
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ArgEnum)]
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
 pub enum Argon2Type {
     Argon2i,
     Argon2d,

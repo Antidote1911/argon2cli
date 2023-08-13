@@ -1,6 +1,6 @@
 [package]
 name = "argon2cli"
-version = "1.0.0"
+version = "1.0.1"
 description = "A cli app in Rust for calculate Argon2 hash"
 authors = ["Fabrice Corraire <antidote1911@gmail.com>"]
 license = "MIT"
@@ -9,13 +9,13 @@ repository = "https://github.com/Antidote1911/argon2cli"
 edition = "2021"
 
 [dependencies]
-clap = { version = "3.1.6", features = ["derive","cargo"] }
-argon2 = { version = "0.4.0", features = ["parallel"] }
-password-hash = "0.4.0"
+clap = { version = "4.3.21", features = ["derive","cargo"] }
+argon2 = { version = "0.4.1", features = ["parallel"] }
+password-hash = "0.5.0"
 hex = "0.4.3"
-log = "0.4.0"
-env_logger = "0.8.4"
-color-eyre = "0.6.1"
+log = "0.4.20"
+env_logger = "0.10.0"
+color-eyre = "0.6.2"
 
 [[bin]]
 name = "argon2cli"
