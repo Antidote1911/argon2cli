@@ -1,15 +1,14 @@
 #[macro_use]
 extern crate log;
 mod cli;
-mod lib;
 
 use cli::{Argon2Type, Cli};
+use argon2cli::PasswordHashing;
 
 use std::process::exit;
 use color_eyre::eyre::{Result, eyre};
 use color_eyre::owo_colors::OwoColorize;
 use clap::Parser;
-
 
 fn main() {
     if let Err(e) = run() {
@@ -28,13 +27,14 @@ fn run() -> Result<()> {
     }
 
     let algo=match app.ty {
-        Argon2Type::Argon2d => lib::Argon2Type::Argon2d,
-        Argon2Type::Argon2i => lib::Argon2Type::Argon2i,
-        Argon2Type::Argon2id => lib::Argon2Type::Argon2id,
+        Argon2Type::Argon2d => argon2cli::Argon2Type::Argon2d,
+        Argon2Type::Argon2i => argon2cli::Argon2Type::Argon2i,
+        Argon2Type::Argon2id => argon2cli::Argon2Type::Argon2id,
     };
 
     // Create PasswordHashing with default values.
-    let mut config = lib::PasswordHashing::new();
+    let mut config = PasswordHashing::new();
+
     // Modify this values with user inputs
     config.password=app.password();
     config.iterations=app.iteration();

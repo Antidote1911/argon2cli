@@ -54,21 +54,22 @@ impl PasswordHashing {
             Argon2Type::Argon2id => Algorithm::Argon2id,
         };
 
-        let mut pb = ParamsBuilder::new();
-        pb.m_cost(self.memory).map_err(|_| eyre!("Incorrect Memory"))?;
-        pb.t_cost(self.iterations).map_err(|_| eyre!("Incorrect passes value"))?;
-        pb.p_cost(self.parallel).map_err(|_| eyre!("Incorrect parallel value"))?;
-        pb.output_len(self.length).map_err(|_| eyre!("Incorrect output len"))?;
-
-        let params = pb.params().map_err(|e| e.to_string()).unwrap();
+        let params = ParamsBuilder::new()
+            .m_cost(self.memory)
+            .t_cost(self.iterations)
+            .p_cost(self.parallel)
+            .output_len(self.length)
+            .build()
+            .unwrap();
 
         let argon2 = Argon2::new(algo, Version::V0x13, params);
         let password = self.password.as_str();
         let temp = self.salt.as_ref();
-        let saltstring = SaltString::b64_encode(temp).map_err(|e| e.to_string()).unwrap();
+
+        let saltstring = SaltString::encode_b64(&temp).unwrap();
 
         let start = Instant::now();
-        let phc_string = argon2.hash_password(password.as_bytes(), saltstring.as_ref()).map_err(|e| eyre!(e))?;
+        let phc_string = argon2.hash_password(password.as_bytes(), &saltstring).map_err(|e| eyre!(e))?;
         let duration = start.elapsed();
         let executiontime = duration.as_secs_f64().to_string();
 
