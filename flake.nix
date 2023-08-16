@@ -7,7 +7,7 @@
   outputs = { self, nixpkgs, utils }:
     let
       inherit (builtins) fromTOML readFile;
-      dexiosCargoToml = fromTOML (readFile ./argon2cli/Cargo.toml);
+      argon2cliCargoToml = fromTOML (readFile ./argon2cli/Cargo.toml);
 
       mkArgon2cli = { lib, rustPlatform, ... }: rustPlatform.buildRustPackage {
         inherit (argon2cliCargoToml.package) name version;
@@ -21,8 +21,8 @@
     in
     {
       overlays = rec {
-        dexios = final: prev: {
-          dexios = prev.callPackage mkArgon2cli { };
+        argon2cli = final: prev: {
+          argon2cli = prev.callPackage mkArgon2cli { };
         };
         default = argon2cli;
       };
