@@ -1,6 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Cargo Build & Test](https://github.com/Antidote1911/argon2cli/actions/workflows/ci.yml/badge.svg)](https://github.com/Antidote1911/argon2cli/actions/workflows/ci.yml)
-[![Build status](https://ci.appveyor.com/api/projects/status/nc2wba8qdi3yo0bm?svg=true)](https://ci.appveyor.com/project/Antidote1911/argon2cli)
+[![Build and Upload](https://github.com/Antidote1911/argon2cli/actions/workflows/cargo-build.yml/badge.svg)](https://github.com/Antidote1911/argon2cli/actions/workflows/cargo-build.yml)
 
 # argon2cli
 A command-line utility to test specific Argon2 instances on your system.  
