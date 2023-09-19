@@ -1,6 +1,3 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Build and Upload](https://github.com/Antidote1911/argon2cli/actions/workflows/cargo-build.yml/badge.svg)](https://github.com/Antidote1911/argon2cli/actions/workflows/cargo-build.yml)
-
 # argon2cli
 A command-line utility to test specific Argon2 instances on your system.  
 Latest Windows x64 release is [here](https://github.com/Antidote1911/argon2cli/releases/latest).
