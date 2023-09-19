@@ -45,11 +45,11 @@ fn run() -> Result<()> {
     config.variant=algo;
     let test=config.start()?;
 
-    if app.oh(){
+    if app.op(){
         println!("{}",test.0);
         exit(0)
     }
-    if app.op(){
+    if app.oh(){
         println!("{}",test.1);
         exit(0)
     }
