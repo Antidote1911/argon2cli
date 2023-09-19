@@ -9,8 +9,8 @@ repository = "https://github.com/Antidote1911/argon2cli"
 edition = "2021"
 
 [dependencies]
-clap = { version = "4.3.21", features = ["derive","cargo"] }
-argon2 = "0.5.1"
+clap = { version = "4.4.4", features = ["derive","cargo"] }
+argon2 = "0.5.2"
 password-hash = "0.5.0"
 hex = "0.4.3"
 log = "0.4.20"
