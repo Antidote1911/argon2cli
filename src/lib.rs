@@ -1,11 +1,11 @@
 use std::fmt::Debug;
 use std::time::Instant;
 
-use argon2::{Algorithm, Argon2, ParamsBuilder, password_hash::{
-    PasswordHasher, SaltString,
-}, Version};
+use argon2::{
+    password_hash::{PasswordHasher, SaltString},
+    Algorithm, Argon2, ParamsBuilder, Version,
+};
 use color_eyre::eyre::{eyre, Result};
-
 
 #[derive(Debug)]
 pub struct PasswordHashing {
@@ -66,20 +66,24 @@ impl PasswordHashing {
         let password = self.password.as_str();
         let temp = self.salt.as_ref();
 
-        let saltstring = SaltString::encode_b64(&temp).unwrap();
+        let saltstring = SaltString::encode_b64(temp).unwrap();
 
         let start = Instant::now();
-        let phc_string = argon2.hash_password(password.as_bytes(), &saltstring).map_err(|e| eyre!(e))?;
+        let phc_string = argon2
+            .hash_password(password.as_bytes(), &saltstring)
+            .map_err(|e| eyre!(e))?;
         let duration = start.elapsed();
         let executiontime = duration.as_secs_f64().to_string();
 
         let key_hash_b64 = phc_string.hash.unwrap();
         let key_hash_bytes = key_hash_b64.as_bytes();
 
-        Ok((phc_string.to_string(),
+        Ok((
+            phc_string.to_string(),
             hex::encode(key_hash_bytes),
             key_hash_b64.to_string(),
             saltstring.as_ref().to_string(),
-            executiontime))
+            executiontime,
+        ))
     }
 }

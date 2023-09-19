@@ -1,4 +1,4 @@
-use clap::{ValueEnum, Parser};
+use clap::{Parser, ValueEnum};
 
 const AUTHOR: &str = "
 Author : Fabrice Corraire <antidote1911@gmail.com>
@@ -8,7 +8,6 @@ Github : https://github.com/Antidote1911/
 #[derive(Parser)]
 #[clap(about, author=AUTHOR, version)]
 pub struct Cli {
-
     /// The password to hash
     #[clap(long, default_value_t = String::from("password"))]
     pass: String,
@@ -36,7 +35,6 @@ pub struct Cli {
     /// Algo variant to use
     #[clap(short, long, value_enum, name = "TYPE", default_value = "argon2i")]
     pub ty: Argon2Type,
-
 
     /// Only output hex hash
     #[clap(long)]
