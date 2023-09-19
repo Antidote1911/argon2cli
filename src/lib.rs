@@ -1,5 +1,4 @@
-use std::fmt::Debug;
-use std::time::Instant;
+use std::{fmt::Debug, time::Instant};
 
 use argon2::{
     password_hash::{PasswordHasher, SaltString},

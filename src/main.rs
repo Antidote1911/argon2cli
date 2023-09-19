@@ -2,13 +2,15 @@
 extern crate log;
 mod cli;
 
-use argon2cli::PasswordHashing;
-use cli::{Argon2Type, Cli};
-
-use clap::Parser;
-use color_eyre::eyre::{eyre, Result};
-use color_eyre::owo_colors::OwoColorize;
 use std::process::exit;
+
+use argon2cli::PasswordHashing;
+use clap::Parser;
+use cli::{Argon2Type, Cli};
+use color_eyre::{
+    eyre::{eyre, Result},
+    owo_colors::OwoColorize,
+};
 
 fn main() {
     if let Err(e) = run() {
