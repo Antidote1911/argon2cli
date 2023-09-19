@@ -1,6 +1,6 @@
 # argon2cli
 A command-line utility to test specific Argon2 instances on your system.  
-Latest Windows x64 release is [here](https://github.com/Antidote1911/argon2cli/releases/latest).
+Latest Windows, Linux and other release are [here](https://github.com/Antidote1911/argon2cli/releases/latest).
 
 To show usage instructions, run:
 ```bash
@@ -44,9 +44,9 @@ Execution Time : 1.6075927989999999 s
 
 For use in script, the flags --oh (only output hash) or --op (only output phc string) are very usefull.
 ```bash
-./argon2cli --oh
+./argon2cli --op
 $argon2i$v=19$m=65536,t=2,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG
 
-./argon2cli --op
+./argon2cli --oh
 45d7ac72e76f242b20b77b9bf9bf9d5915894e669a24e6c6
 ```
