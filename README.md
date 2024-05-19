@@ -1,5 +1,7 @@
+[![CI](https://github.com/Antidote1911/argon2cli/actions/workflows/ci.yml/badge.svg)](https://github.com/Antidote1911/argon2cli/actions/workflows/ci.yml)
+
 # argon2cli
-A command-line utility to test specific Argon2 instances on your system.  
+A command-line utility to test specific Argon2 instances on your system.
 Latest Windows, Linux and other release are [here](https://github.com/Antidote1911/argon2cli/releases/latest).
 
 To show usage instructions, run:
@@ -21,8 +23,8 @@ Execution Time : 0.017565563 s
 ```
 
 ### No arguments or missing some of them
-With no arguments or missing some of them, it use this defaults values for speed test:  
-- pass = password  
+With no arguments or missing some of them, it use this defaults values for speed test:
+- pass = password
 - salt = somesalt
 - memory = 65536 KiB
 - parallelism = 4
