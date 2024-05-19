@@ -1,6 +1,6 @@
 [package]
 name = "argon2cli"
-version = "1.0.1"
+version = "1.0.2"
 description = "A cli app in Rust for calculate and bench Argon2 hash"
 authors = ["Fabrice Corraire <antidote1911@gmail.com>"]
 license = "MIT"
